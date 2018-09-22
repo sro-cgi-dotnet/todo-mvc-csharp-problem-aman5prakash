@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Google.Keep;
+using Classes;
 
 namespace Practice
 {
@@ -28,6 +29,7 @@ namespace Practice
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<GoogleContext>();
+            services.AddScoped<INoteClass,NoteClass>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
