@@ -125,26 +125,14 @@ namespace Practice.Controllers
         }
 
         // PUT api/values/5
-        [HttpPut("{title}")]
-        public IActionResult Put(string title, [FromQuery] string type, [FromBody] Keep value)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Keep value)
         {
             using (Notes)
             {
-                if (type == "title")
-                {
-                 List<Keep> ListTitle = Notes.Google.Where(k => k.Title == title).Include(l => l.Lable).Include(c => c.CheckList).ToList();
-                if (ListTitle.Count == 0)
-                {
-                    return BadRequest($"Title doesnot found");
-                }
-                else
-                {
-                    Notes.Google.Update(value);
-                    Notes.SaveChanges();
-                    return Ok("Updated");
-                }
-                }
-                return BadRequest($"Syntax Error");
+                Notes.Update<Keep>(value);
+                Notes.SaveChanges();
+                return Ok("Updated");
             }
         }
 
