@@ -1,0 +1,12 @@
+language: csharp
+solution: todo-mvc-csharp-problem-aman5prakash
+notifications:
+  email:
+    on_success: always
+    on_failure: always
+  slack: cgiwave6:lcJAQ85bOZutszEwl7lG0qi4
+mono: none
+dotnet: 2.1
+script:
+  - dotnet restore
+  - dotnet test Practice.Tests

@@ -21,7 +21,7 @@ namespace Practice.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IActionResult Get()
         {
             var temp = Notess.GetAllNotes();
             if (temp.Count == 0)
@@ -33,7 +33,7 @@ namespace Practice.Controllers
 
         // GET api/values/5
         [HttpGet("{KeepId:int}")]
-        public ActionResult<int> Get(int Keepid)
+        public IActionResult Get(int Keepid)
         {
             var ListID = Notess.GetNotesById(Keepid);
             if (ListID != null)
@@ -46,7 +46,7 @@ namespace Practice.Controllers
             }
         }
         [HttpGet("{text}")]
-        public ActionResult<string> Get(string text, [FromQuery] string type)
+        public IActionResult Get(string text, [FromQuery] string type)
         {
             if (type == "label")
             {
